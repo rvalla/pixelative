@@ -1,9 +1,13 @@
 {
 	"inPath": "input/testing/",
 	"outPath": "output/testing/",
-	"inFile": "testing_5.wav",
-  "outFile": "testing_5",
-	"width": 600,
-	"height": 400,
-	"mode": "both"
+	"inFile": "testing_8.wav",
+  "outFile": "testing_8",
+	"width": 1654,
+	"height": 1014,
+	"audio": "mono",
+	"mode": "both",
+	"redfactor": 255,
+	"greenfactor": 100,
+	"bluefactor": 180
 }
