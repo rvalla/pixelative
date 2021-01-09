@@ -1,0 +1,16 @@
+{
+	"inPath": "input/mondriansmusic/level_4/",
+	"outPath": "output/mondriansmusic/",
+  "name": "20210109_MM_L4_001",
+	"width": 3000,
+	"height": 3000,
+	"backred": 255,
+	"backgreen": 255,
+	"backblue": 255,
+	"omit": false,
+	"omitred": 255,
+	"omitgreen": 255,
+	"omitblue": 255,
+	"mode": "average",
+	"position": "random"
+}

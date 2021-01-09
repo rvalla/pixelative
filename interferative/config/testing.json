@@ -1,0 +1,16 @@
+{
+	"inPath": "input/testing/",
+	"outPath": "output/testing/",
+  "name": "testing_4",
+	"width": 1200,
+	"height": 1200,
+	"backred": 255,
+	"backgreen": 255,
+	"backblue": 255,
+	"omit": true,
+	"omitred": 50,
+	"omitgreen": 200,
+	"omitblue": 250,
+	"mode": "average",
+	"position": "random"
+}
