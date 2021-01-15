@@ -1,0 +1,23 @@
+{
+	"reference": "Hénon",
+	"outPath": "output/testing/",
+  "outFile": "testing_1",
+	"width": 3000,
+	"height": 2000,
+	"margin": 150,
+	"points": 2000000,
+	"loop": 10000,
+	"originX": 0,
+	"originY": 0,
+	"paramMode": "values",
+	"paramCodeX": "?",
+	"paramCodeY": "?",
+	"paramX": "1,0,-1.4,0,0,0,0,0.3,0,0",
+	"paramY": "0,1,0,0,0,0,0,0,0,0",
+	"facered": 30,
+	"facegreen": 50,
+	"faceblue": 125,
+	"backred": 25,
+	"backgreen": 10,
+	"backblue": 10
+}

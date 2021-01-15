@@ -1,0 +1,23 @@
+{
+	"reference": "triangle",
+	"outPath": "output/testing/",
+  "outFile": "testing_2",
+	"width": 3000,
+	"height": 2000,
+	"margin": 150,
+	"points": 2000000,
+	"loop": 10000,
+	"originX": 0,
+	"originY": 0,
+	"paramMode": "values",
+	"paramCodeX": "?",
+	"paramCodeY": "?",
+	"paramX": "-1.2,-0.6,-0.5,0,0,0.1,0,-0.7,0.2,0",
+	"paramY": "-0.9,0.9,0.1,0,0,-0.3,0,-1,0.3,0",
+	"facered": 120,
+	"facegreen": 50,
+	"faceblue": 90,
+	"backred": 0,
+	"backgreen": 25,
+	"backblue": 0
+}
