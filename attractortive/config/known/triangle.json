@@ -1,7 +1,7 @@
 {
 	"reference": "triangle",
-	"outPath": "output/testing/",
-  "outFile": "testing_2",
+	"outPath": "output/known/",
+  "outFile": "triangle",
 	"width": 3000,
 	"height": 2000,
 	"margin": 150,
@@ -14,10 +14,11 @@
 	"paramCodeY": "?",
 	"paramX": "-1.2,-0.6,-0.5,0,0,0.1,0,-0.7,0.2,0",
 	"paramY": "-0.9,0.9,0.1,0,0,-0.3,0,-1,0.3,0",
+	"colorMode": "additive",
 	"facered": 120,
 	"facegreen": 50,
-	"faceblue": 90,
+	"faceblue": 110,
 	"backred": 0,
-	"backgreen": 25,
+	"backgreen": 15,
 	"backblue": 0
 }

@@ -19,28 +19,26 @@ class Attractor():
 		self.data = np.zeros((size, 2), dtype="float64") #the attractor points
 		print("-- Attractor construction started!", end="\n")
 		Attractor.buildPoints(self)
-		print(self)
 
 	def buildPoints(self):
 		loops = divmod(self.size, self.loopsize) #dividing iterations in steps
 		for i in range(loops[0]):
 			print("-- " + str(i * self.loopsize) + " points built...               ", end="\r")
 			for e in range(self.loopsize):
-				self.x = Attractor.getNewCoordinate(self.px, self.py, self.xc) #get a new x coordinate
-				self.y = Attractor.getNewCoordinate(self.px, self.py, self.yc) #get a new y coordinate
-				if math.isfinite(self.x) and math.isfinite(self.y): #checking is x and y define a point
-					self.px = self.x #updating previous values
-					self.py = self.y
-					self.data[i*self.loopsize + e][0] = self.x #saving new point
-					self.data[i*self.loopsize + e][1] = self.y
-					Attractor.checkLimits(self.x, self.limX)
-					Attractor.checkLimits(self.y, self.limY)
-				else:
-					print("-- there is no attractor here...                      ", end="\n")
-					break
-			else:
-				continue
-			break
+				try:
+					self.x = Attractor.getNewCoordinate(self.px, self.py, self.xc) #get a new x coordinate
+					self.y = Attractor.getNewCoordinate(self.px, self.py, self.yc) #get a new y coordinate
+				except:
+					print("-- the attractor is so strange...", end="\n")
+					print("-- the program is interrupted!", end="\n")
+					exit()
+				self.px = self.x #updating previous values
+				self.py = self.y
+				self.data[i*self.loopsize + e][0] = self.x #saving new point
+				self.data[i*self.loopsize + e][1] = self.y
+				Attractor.checkLimits(self.x, self.limX)
+				Attractor.checkLimits(self.y, self.limY)
+		print("-- all points were saved!                                         ", end="\n")
 
 	def getNewCoordinate(px, py, c):
 		#taking previous x and y and calculating new value for coeficients store in c

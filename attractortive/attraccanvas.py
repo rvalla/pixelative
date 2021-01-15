@@ -5,18 +5,27 @@ from PIL import Image as im
 class AttracCanvas():
 	"The canvas where attractors are print"
 
-	def __init__(self, w, h, margin, background, attractor):
+	def __init__(self, w, h, margin, background, cmode, attractor):
 		self.w = w #the result image width
 		self.h = h #the result image height
 		self.m = margin #rows and columns of blank pixels for border
 		self.aw = abs(attractor.limX[1] - attractor.limX[0]) #here we store the attractor width
 		self.ah = abs(attractor.limY[1] - attractor.limY[0]) #here we store the attractor height
+		self.cmode = cmode
 		self.background = background
 		self.pstate = np.zeros((h, w), dtype="int") #we save the pixel's state
 		self.canvas = np.full((h, w, 3), self.background) #image color data
 		self.overflowpixels = 0
 		print("-- Canvas is ready!", end="\n")
-		AttracCanvas.paintPoints(self, attractor)
+		AttracCanvas.paintAttractor(self, attractor)
+
+	def paintAttractor(self, attractor):
+		if self.cmode == "additive":
+			AttracCanvas.paintPoints(self, attractor)
+		elif self.cmode == "fixed":
+			AttracCanvas.paintFixedPoints(self, attractor)
+		else:
+			print("-- I can't recognize color mode...", end="\n")
 
 	def paintPoints(self, attractor):
 		print("-- painting " + str(attractor.size) + " attractor points...", end="\r")
@@ -33,6 +42,14 @@ class AttracCanvas():
 				self.canvas[y][x] = np.absolute(attractor.color)
 				self.pstate[y][x] += 1
 		print("-- " + str(self.overflowpixels) + " pixels were saturated...           ", end="\n")
+		print("-- attractor points painted!", end="\n")
+
+	def paintFixedPoints(self, attractor):
+		print("-- painting " + str(attractor.size) + " attractor points...", end="\r")
+		for p in range(attractor.data.shape[0]):
+			x = AttracCanvas.getPixel(attractor.data[p][0], attractor.limX[0], self.aw, self.w, self.m)
+			y = AttracCanvas.getPixel(attractor.data[p][1], attractor.limY[0], self.ah, self.h, self.m)
+			self.canvas[y][x] = attractor.color
 		print("-- attractor points painted!", end="\n")
 
 	def getPixel(f, amin, asize, isize, margin):

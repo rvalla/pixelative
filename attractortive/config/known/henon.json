@@ -1,7 +1,7 @@
 {
 	"reference": "Hénon",
-	"outPath": "output/testing/",
-  "outFile": "testing_1",
+	"outPath": "output/known/",
+  "outFile": "henon",
 	"width": 3000,
 	"height": 2000,
 	"margin": 150,
@@ -14,10 +14,11 @@
 	"paramCodeY": "?",
 	"paramX": "1,0,-1.4,0,0,0,0,0.3,0,0",
 	"paramY": "0,1,0,0,0,0,0,0,0,0",
+	"colorMode": "additive",
 	"facered": 30,
-	"facegreen": 50,
+	"facegreen": 70,
 	"faceblue": 125,
-	"backred": 25,
+	"backred": 20,
 	"backgreen": 10,
 	"backblue": 10
 }

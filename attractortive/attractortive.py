@@ -19,12 +19,13 @@ class Attractortive():
 		self.width = None
 		self.height = None
 		self.margin = None
+		self.cmode = None
 		self.color = None
 		self.background = None
 		Attractortive.setConfig(self, self.config)
 		print(self)
 		self.theattractor = Attractor(self.points, self.loop, self.origin, self.param, self.color)
-		self.thecanvas = AttracCanvas(self.width, self.height, self.margin, self.background, self.theattractor)
+		self.thecanvas = AttracCanvas(self.width, self.height, self.margin, self.background, self.cmode, self.theattractor)
 		self.thecanvas.save(self.outPath, self.outFile)
 		print("-- time needed to build and paint this attractor: " + \
 				Attractortive.getWorkingTime(self.starttime, tm.time()))
@@ -42,6 +43,7 @@ class Attractortive():
 		self.width = data["width"]
 		self.height = data["height"]
 		self.margin = data["margin"]
+		self.cmode = data["colorMode"]
 		self.color = Attractortive.getColor(data["facered"], data["facegreen"], data["faceblue"])
 		self.background = Attractortive.getColor(data["backred"], data["backgreen"], data["backblue"])
 
