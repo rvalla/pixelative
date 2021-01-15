@@ -2,9 +2,6 @@
 import json as js
 from attractortive import Attractortive
 
-
-config = js.load(open("config/testing_2.json"))
-a = Attractortive(config)
-
-config = js.load(open("config/testing_3.json"))
-a = Attractortive(config)
+charset = js.load(open("config/characterset.json"))
+config = js.load(open("config/spratt/spaceship.json"))
+a = Attractortive(config, charset)

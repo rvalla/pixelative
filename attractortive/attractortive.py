@@ -7,7 +7,7 @@ class Attractortive():
 	"Building and saving strange attractors"
 
 	#the constructor
-	def __init__(self, config):
+	def __init__(self, config, charcode):
 		self.config = config
 		self.starttime = tm.time()
 		self.outPath = None
@@ -22,7 +22,7 @@ class Attractortive():
 		self.cmode = None
 		self.color = None
 		self.background = None
-		Attractortive.setConfig(self, self.config)
+		Attractortive.setConfig(self, self.config, charcode)
 		print(self)
 		self.theattractor = Attractor(self.points, self.loop, self.origin, self.param, self.color)
 		self.thecanvas = AttracCanvas(self.width, self.height, self.margin, self.background, self.cmode, self.theattractor)
@@ -31,15 +31,15 @@ class Attractortive():
 				Attractortive.getWorkingTime(self.starttime, tm.time()))
 
 	#loading configuration parameters
-	def setConfig(self, data):
+	def setConfig(self, data, charcode):
 		self.outPath = data["outPath"]
 		self.outFile = data["outFile"]
 		self.points = data["points"]
 		self.loop = data["loop"]
 		self.origin.append(data["originX"])
 		self.origin.append(data["originY"])
-		self.param.append(Attractortive.getParametersList(data["paramMode"], data["paramCodeX"], data["paramX"]))
-		self.param.append(Attractortive.getParametersList(data["paramMode"], data["paramCodeY"], data["paramY"]))
+		self.param.append(Attractortive.getParametersList(data["paramMode"], data["paramCodeX"], data["paramX"], charcode))
+		self.param.append(Attractortive.getParametersList(data["paramMode"], data["paramCodeY"], data["paramY"], charcode))
 		self.width = data["width"]
 		self.height = data["height"]
 		self.margin = data["margin"]
@@ -48,11 +48,11 @@ class Attractortive():
 		self.background = Attractortive.getColor(data["backred"], data["backgreen"], data["backblue"])
 
 	#building list of parameters for attractor equations
-	def getParametersList(mode, code, list):
+	def getParametersList(mode, code, list, charcode):
 		if mode == "values":
 			return Attractortive.getParametersFromValues(list)
 		elif mode == "code":
-			return Attractortive.getParametersFromCode(code)
+			return Attractortive.getParametersFromCode(code, charcode)
 
 	#transforming parameters list in a list of floats
 	def getParametersFromValues(list):
@@ -63,8 +63,12 @@ class Attractortive():
 		return parameters
 
 	#function to get parameters from code as the one use in Spratt's book
-	def getParametersFromCode(list):
-		print("-- under construction, sorry")
+	def getParametersFromCode(code, charcode):
+		charlist = [char for char in code]
+		parameters = []
+		for c in range(len(charlist)):
+			parameters.append(charcode[charlist[c]])
+		return parameters
 
 	#saving color data in a numpy array
 	def getColor(r, g, b):
