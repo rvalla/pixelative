@@ -21,6 +21,7 @@ class Attractor():
 		self.data = np.zeros((size, 2), dtype="float64") #the attractor points
 		print("-- Attractor construction started!", end="\n")
 		Attractor.buildPoints(self)
+		print(self)
 
 	def buildPoints(self):
 		loops = divmod(self.size, self.loopsize) #dividing iterations in steps
@@ -35,12 +36,18 @@ class Attractor():
 					print("-- the program is interrupted!", end="\n")
 					self.success = False
 					break
-				self.px = self.x #updating previous values
-				self.py = self.y
-				self.data[i*self.loopsize + e][0] = self.x #saving new point
-				self.data[i*self.loopsize + e][1] = self.y
-				Attractor.checkLimits(self.x, self.limX)
-				Attractor.checkLimits(self.y, self.limY)
+				if math.isfinite(self.x) and math.isfinite(self.y):
+					self.px = self.x #updating previous values
+					self.py = self.y
+					self.data[i*self.loopsize + e][0] = self.x #saving new point
+					self.data[i*self.loopsize + e][1] = self.y
+					Attractor.checkLimits(self.x, self.limX)
+					Attractor.checkLimits(self.y, self.limY)
+				else:
+					print("-- the attractor went to infinity...", end="\n")
+					print("-- the program is interrupted!", end="\n")
+					self.success = False
+					break
 			else:
 				continue
 			break

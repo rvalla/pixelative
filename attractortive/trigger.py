@@ -6,7 +6,7 @@ from attractortive import Attractortive
 charset = js.load(open("config/characterset.json"))
 
 #loading configuration file
-config = js.load(open("config/found/20210115_01.json"))
+config = js.load(open("config/found/20210116_05.json"))
 
 #creating and painting the attractor
 a = Attractortive(config, charset)
