@@ -1,3 +1,4 @@
+import sys
 import math
 import numpy as np
 
@@ -6,6 +7,7 @@ class Attractor():
 
 	def __init__(self, size, lsize, origin, parameters, color):
 		self.size = size #number of iterations
+		self.success = True
 		self.loopsize = lsize #size of step in nested building loop
 		self.color = color #the attractor color
 		self.x = origin[0] #actual value for x
@@ -31,13 +33,17 @@ class Attractor():
 				except:
 					print("-- the attractor is so strange...", end="\n")
 					print("-- the program is interrupted!", end="\n")
-					exit()
+					self.success = False
+					break
 				self.px = self.x #updating previous values
 				self.py = self.y
 				self.data[i*self.loopsize + e][0] = self.x #saving new point
 				self.data[i*self.loopsize + e][1] = self.y
 				Attractor.checkLimits(self.x, self.limX)
 				Attractor.checkLimits(self.y, self.limY)
+			else:
+				continue
+			break
 		print("-- all points were saved!                                         ", end="\n")
 
 	def getNewCoordinate(px, py, c):

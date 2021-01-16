@@ -25,10 +25,13 @@ class Attractortive():
 		Attractortive.setConfig(self, self.config, charcode)
 		print(self)
 		self.theattractor = Attractor(self.points, self.loop, self.origin, self.param, self.color)
-		self.thecanvas = AttracCanvas(self.width, self.height, self.margin, self.background, self.cmode, self.theattractor)
-		self.thecanvas.save(self.outPath, self.outFile)
-		print("-- time needed to build and paint this attractor: " + \
-				Attractortive.getWorkingTime(self.starttime, tm.time()))
+		if self.theattractor.success:
+			self.thecanvas = AttracCanvas(self.width, self.height, self.margin, self.background, self.cmode, self.theattractor)
+			self.thecanvas.save(self.outPath, self.outFile)
+			print("-- time needed to build and paint this attractor: " + \
+					Attractortive.getWorkingTime(self.starttime, tm.time()))
+		else:
+			print("-- there is no attractor to paint...", end="\n")
 
 	#loading configuration parameters
 	def setConfig(self, data, charcode):
