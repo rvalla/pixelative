@@ -1,4 +1,5 @@
 import warnings
+import math
 import time as tm
 import numpy as np
 import json as js
@@ -15,7 +16,7 @@ class SoundsColor():
 		self.starttime = None
 		self.outPath = None
 		self.outFile = None
-		self.mode = None
+		self.direction = None
 		self.iw = None
 		self.ih = None
 		self.imagedata = None
@@ -34,21 +35,21 @@ class SoundsColor():
 		self.starttime = tm.time()
 		if self.audioch == 1:
 			print("-- ready to process " + str(self.audiodata.shape) + " samples...")
-			if self.mode == "horizontal":
+			if self.direction == "horizontal":
 				SoundsColor.mapMono(self.audiodata, self.imagedata, self.iw, self.ih, self.cfactors, 0)
-			elif self.mode == "vertical":
+			elif self.direction == "vertical":
 				SoundsColor.mapMono(self.audiodata, self.imagedata, self.iw, self.ih, self.cfactors, 1)
-			elif self.mode == "both":
+			elif self.direction == "both":
 				SoundsColor.mapMono(self.audiodata, self.imagedata, self.iw, self.ih, self.cfactors, 2)
 			else:
 				print("-- I don't know what to do with this mode...", end="\n")
 		elif self.audioch == 2:
 			print("-- ready to process " + str(self.audiodata.shape[0]) + " samples...")
-			if self.mode == "horizontal":
+			if self.direction == "horizontal":
 				SoundsColor.mapStereo(self.audiodata, self.imagedata, self.iw, self.ih, self.cfactors, 0)
-			elif self.mode == "vertical":
+			elif self.direction == "vertical":
 				SoundsColor.mapStereo(self.audiodata, self.imagedata, self.iw, self.ih, self.cfactors, 1)
-			elif self.mode == "both":
+			elif self.direction == "both":
 				SoundsColor.mapStereo(self.audiodata, self.imagedata, self.iw, self.ih, self.cfactors, 2)
 			else:
 				print("-- I don't know what to do with this mode...", end="\n")
@@ -89,17 +90,20 @@ class SoundsColor():
 
 	def getColor(amplitude, rf, gf, bf):
 		color = np.zeros(3, dtype="uint8")
-		color[0] = round(amplitude * rf)
-		color[1] = round(amplitude * gf)
-		color[2] = round(amplitude * bf)
+		color[0] = round(SoundsColor.mapAmplitude(amplitude, rf))
+		color[1] = round(SoundsColor.mapAmplitude(amplitude, gf))
+		color[2] = round(SoundsColor.mapAmplitude(amplitude, bf))
 		return color
 
 	def getHalfColor(amplitude, rf, gf, bf):
 		color = np.zeros(3, dtype="uint8")
-		color[0] = round(amplitude * rf / 2)
-		color[1] = round(amplitude * gf / 2)
-		color[2] = round(amplitude * bf / 2)
+		color[0] = round(SoundsColor.mapAmplitude(amplitude, rf) / 2)
+		color[1] = round(SoundsColor.mapAmplitude(amplitude, gf) / 2)
+		color[2] = round(SoundsColor.mapAmplitude(amplitude, bf) / 2)
 		return color
+
+	def mapAmplitude(amplitude, factor):
+		return math.sqrt(amplitude) * factor
 
 	def save(filepath, filename, idata):
 		image = im.fromarray(idata)
@@ -107,7 +111,7 @@ class SoundsColor():
 		print("-- output image file saved!", end="\n")
 
 	def setConfig(self, data):
-		self.mode = data["mode"]
+		self.direction = data["direction"]
 		self.outPath = data["outPath"]
 		self.outFile = data["outFile"]
 		self.iw = data["width"]

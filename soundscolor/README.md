@@ -1,6 +1,6 @@
 ![icon](https://gitlab.com/azarte/pixelative/-/raw/master/assets/img/logo_64.png)
 
-# pixelative
+# pixelative: soundscolor
 
 Here I am exploring options to transform audio data into images... Work in progress!  
 

@@ -6,8 +6,8 @@
 	"width": 1654,
 	"height": 1014,
 	"audio": "mono",
-	"mode": "both",
+	"direction": "vertical",
 	"redfactor": 255,
 	"greenfactor": 100,
-	"bluefactor": 180
+	"bluefactor": 160
 }
