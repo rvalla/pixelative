@@ -3,9 +3,10 @@ import json as js
 import random as rd
 from attractortive import Attractortive
 
+search = "005_" #number to indentify search
 count = 1000 #number of intends
-paramInterval = 1.5 #limiting the random values to (-paramInterval, paramInterval)
-paramVarLimit = 0.15 #limiting the random variations to (-paramVarLimit, paramVarLimit)
+paramInterval = 2.0 #limiting the random values to (-paramInterval, paramInterval)
+paramVarLimit = 0.1 #limiting the random variations to (-paramVarLimit, paramVarLimit)
 
 #loading the character code set
 charset = js.load(open("config/characterset.json"))
@@ -17,13 +18,13 @@ configVariations = js.load(open("config/variations/variations.json"))
 #function to get random values
 def getRandomValue(interval):
 	v = rd.uniform(-interval, interval)
-	return round(v, 2)
+	return round(v, 3)
 
 #function to get random variations
 def getRandomVariation(value, variation):
 	v = rd.uniform(-variation, variation)
 	value += v
-	return round(value, 2)
+	return round(value, 3)
 
 #function to create a random parameters list
 def randomParameters():
@@ -49,7 +50,7 @@ def randomSearch():
 	for t in range(count):
 		paramX = randomParameters()
 		paramY = randomParameters()
-		configSearch["outFile"] = paramX + paramY
+		configSearch["outFile"] = search + paramX + paramY
 		configSearch["paramX"] = paramX
 		configSearch["paramY"] = paramY
 		a = Attractortive(configSearch, charset)
@@ -59,7 +60,7 @@ def variationSearch():
 	for t in range(count):
 		paramX = randomVariation(configVariations["paramX"])
 		paramY = randomVariation(configVariations["paramY"])
-		configVariations["outFile"] = paramX + paramY
+		configVariations["outFile"] = search + paramX + paramY
 		configVariations["paramX"] = paramX
 		configVariations["paramY"] = paramY
 		a = Attractortive(configVariations, charset)
