@@ -28,8 +28,9 @@ class Attractortive():
 		if self.theattractor.success:
 			self.thecanvas = AttracCanvas(self.width, self.height, self.margin, self.background, self.cmode, self.theattractor)
 			self.thecanvas.save(self.outPath, self.outFile)
+			Attractortive.saveToDatabase(self, "database/attractors.csv")
 			print("-- time needed to build and paint this attractor: " + \
-					Attractortive.getWorkingTime(self.starttime, tm.time()))
+					Attractortive.getWorkingTime(self, self.starttime, tm.time()))
 		else:
 			print("-- there is no attractor to paint...", end="\n")
 
@@ -41,24 +42,24 @@ class Attractortive():
 		self.loop = data["loop"]
 		self.origin.append(data["originX"])
 		self.origin.append(data["originY"])
-		self.param.append(Attractortive.getParametersList(data["paramMode"], data["paramCodeX"], data["paramX"], charcode))
-		self.param.append(Attractortive.getParametersList(data["paramMode"], data["paramCodeY"], data["paramY"], charcode))
+		self.param.append(Attractortive.getParametersList(self, data["paramMode"], data["paramCodeX"], data["paramX"], charcode))
+		self.param.append(Attractortive.getParametersList(self, data["paramMode"], data["paramCodeY"], data["paramY"], charcode))
 		self.width = data["width"]
 		self.height = data["height"]
 		self.margin = data["margin"]
 		self.cmode = data["colorMode"]
-		self.color = Attractortive.getColor(data["facered"], data["facegreen"], data["faceblue"])
-		self.background = Attractortive.getColor(data["backred"], data["backgreen"], data["backblue"])
+		self.color = Attractortive.getColor(self, data["facered"], data["facegreen"], data["faceblue"])
+		self.background = Attractortive.getColor(self, data["backred"], data["backgreen"], data["backblue"])
 
 	#building list of parameters for attractor equations
-	def getParametersList(mode, code, list, charcode):
+	def getParametersList(self, mode, code, list, charcode):
 		if mode == "values":
-			return Attractortive.getParametersFromValues(list)
+			return Attractortive.getParametersFromValues(self, list)
 		elif mode == "code":
-			return Attractortive.getParametersFromCode(code, charcode)
+			return Attractortive.getParametersFromCode(self, code, charcode)
 
 	#transforming parameters list in a list of floats
-	def getParametersFromValues(list):
+	def getParametersFromValues(self, list):
 		values = list.split(",")
 		parameters = []
 		for v in range(len(values)):
@@ -66,7 +67,7 @@ class Attractortive():
 		return parameters
 
 	#function to get parameters from code as the one use in Spratt's book
-	def getParametersFromCode(code, charcode):
+	def getParametersFromCode(self, code, charcode):
 		charlist = [char for char in code]
 		parameters = []
 		for c in range(len(charlist)):
@@ -74,7 +75,7 @@ class Attractortive():
 		return parameters
 
 	#saving color data in a numpy array
-	def getColor(r, g, b):
+	def getColor(self, r, g, b):
 		color = np.zeros(3, dtype="float64")
 		color[0] = r
 		color[1] = g
@@ -82,7 +83,7 @@ class Attractortive():
 		return color
 
 	#calculating time needed for processing an image...
-	def getWorkingTime(start, end):
+	def getWorkingTime(self, start, end):
 		time = end - start
 		formatedTime = Attractortive.formatTime(time)
 		return formatedTime
@@ -96,6 +97,20 @@ class Attractortive():
 		ms += ":"
 		ms += "{:05.2f}".format(seconds)
 		return ms
+
+	def saveToDatabase(self, file):
+		try:
+			file = open(file, "a")
+			file.write(str(self.points) + ",")
+			file.write(str(self.param[0]) + ",")
+			file.write(str(self.param[1]) + ",")
+			file.write(str(self.theattractor.limX[0]) + ",")
+			file.write(str(self.theattractor.limX[1]) + ",")
+			file.write(str(self.theattractor.limY[0]) + ",")
+			file.write(str(self.theattractor.limY[1]) + "\n")
+			file.close()
+		except:
+			print("-- the attractor could not be saved to the database...", end="\n")
 
 	def __str__(self):
 		return "-- pixelative --\n" + \

@@ -12,5 +12,16 @@ located en the pixel).
 
 ![attractors](https://gitlab.com/azarte/pixelative/-/raw/master/assets/img/attractor_aspect.jpg)
 
+## metaattractors
+
+A point of a *strange attractor* come from the previous one. It is a fractal that builds itself recursively. So I wanted
+to test the idea of a *meta attractor*. In each step the input is not a point, is an attractor.  
+
+![metaattractors](https://gitlab.com/azarte/pixelative/-/raw/master/assets/img/metaattractor.jpg)
+
+## database
+
+Since jan.23 the attractors I found are saved in a *.csv* files in *database* folder.  
+
 Feel free to contact me by [mail](mailto:rodrigovalla@protonmail.ch) or reach me in
 [telegram](https://t.me/rvalla) or [mastodon](https://fosstodon.org/@rvalla).

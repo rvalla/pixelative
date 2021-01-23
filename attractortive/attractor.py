@@ -29,8 +29,8 @@ class Attractor():
 			print("-- " + str(i * self.loopsize) + " points built...               ", end="\r")
 			for e in range(self.loopsize):
 				try:
-					self.x = Attractor.getNewCoordinate(self.px, self.py, self.xc) #get a new x coordinate
-					self.y = Attractor.getNewCoordinate(self.px, self.py, self.yc) #get a new y coordinate
+					self.x = Attractor.getNewCoordinate(self, self.px, self.py, self.xc) #get a new x coordinate
+					self.y = Attractor.getNewCoordinate(self, self.px, self.py, self.yc) #get a new y coordinate
 				except:
 					print("-- the attractor is so strange...", end="\n")
 					print("-- the program is interrupted!", end="\n")
@@ -41,8 +41,8 @@ class Attractor():
 					self.py = self.y
 					self.data[i*self.loopsize + e][0] = self.x #saving new point
 					self.data[i*self.loopsize + e][1] = self.y
-					Attractor.checkLimits(self.x, self.limX)
-					Attractor.checkLimits(self.y, self.limY)
+					Attractor.checkLimits(self, self.x, self.limX)
+					Attractor.checkLimits(self, self.y, self.limY)
 				else:
 					print("-- the attractor went to infinity...", end="\n")
 					print("-- the program is interrupted!", end="\n")
@@ -53,26 +53,27 @@ class Attractor():
 			break
 		print("-- all points were saved!                                         ", end="\n")
 
-	def getNewCoordinate(px, py, c):
+	def getNewCoordinate(self, px, py, c):
 		#taking previous x and y and calculating new value for coeficients store in c
 		f = c[0] + px * c[1] + math.pow(px, 2) * c[2] + math.pow(px, 3) * c[3] + \
 			math.pow(px, 2) * py * c[4] + px * py * c[5] + px * math.pow(py, 2) * c[6] + \
 			py * c[7] + math.pow(py, 2) * c[8] + math.pow(py, 3) * c[9]
 		return f
 
-	def checkLimits(f, limits):
+	def checkLimits(self, f, limits):
 		#we save minimum and maximum coordinates to know the attractor's area
 		if f < limits[0]:
-			limits[0] = f
+			limits[0] = round(f, 2)
 		elif f > limits[1]:
-			limits[1] = f
+			limits[1] = round(f, 2)
+
+	def getColor(self):
+		return self.color
 
 	def __str__(self):
 		#the class attractor shows this if you print it
-		return "-- pixelative --\n" + \
-				"-- Attractor\n" + \
-				"-- https://gitlab.com/azarte/pixelative\n" + \
-				"-- version: 0.50\n" + \
-				"-- The chaos in the plane...\n" + \
+		return "-- Attractor\n" + \
 				"-- Points: " + str(self.size) + "\n" + \
+				"-- x parameters: " + str(self.xc) + "\n" + \
+				"-- y parameters: " + str(self.yc) + "\n" + \
 				"-- Limits: " + str(self.limX) + ", " + str(self.limY)

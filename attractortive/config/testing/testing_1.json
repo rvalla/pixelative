@@ -14,7 +14,7 @@
 	"paramCodeY": "FVPMMXMKQM",
 	"paramX": "1,0,-1.4,0,0,0,0,0.3,0,0",
 	"paramY": "0,1,0,0,0,0,0,0,0,0",
-	"colorMode": "additive",
+	"colorMode": "fixed",
 	"facered": 50,
 	"facegreen": 150,
 	"faceblue": 150,
