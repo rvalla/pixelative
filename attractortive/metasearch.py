@@ -5,16 +5,14 @@ import itertools
 import json as js
 from metaattractortive import MetaAttractortive
 
-search = "002_" #number to indentify search
-
-
 #loading the character code set
 charset = js.load(open("config/characterset.json"))
 
 #loading default configuration
-inconfig = js.load(open("config/testing/metatesting_2.json"))
+inconfig = js.load(open("config/metasearch/ms_20210125_02.json"))
 outconfig = copy.deepcopy(inconfig)
 metadepth = inconfig["depth"]
+search = inconfig["outFile"]
 steps = range(metadepth)
 permutations = list(itertools.permutations(steps))
 
