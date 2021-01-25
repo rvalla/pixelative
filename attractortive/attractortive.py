@@ -101,12 +101,11 @@ class Attractortive():
 	def saveToDatabase(self, file):
 		try:
 			file = open(file, "a")
-			file.write(str(self.points) + ",")
-			file.write(str(self.param[0]) + ",")
-			file.write(str(self.param[1]) + ",")
-			file.write(str(self.theattractor.limX[0]) + ",")
-			file.write(str(self.theattractor.limX[1]) + ",")
-			file.write(str(self.theattractor.limY[0]) + ",")
+			file.write(str(self.points) + ";")
+			file.write(str(self.param) + ";")
+			file.write(str(self.theattractor.limX[0]) + ";")
+			file.write(str(self.theattractor.limX[1]) + ";")
+			file.write(str(self.theattractor.limY[0]) + ";")
 			file.write(str(self.theattractor.limY[1]) + "\n")
 			file.close()
 		except:

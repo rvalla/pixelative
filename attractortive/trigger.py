@@ -7,21 +7,7 @@ from metaattractortive import MetaAttractortive
 charset = js.load(open("config/characterset.json"))
 
 #loading configuration file
-config = js.load(open("config/metafound/20210123_04.json"))
-
-#creating and painting the attractor
-a = MetaAttractortive(config, charset)
-
-
-#loading configuration file
-config = js.load(open("config/metafound/20210123_05.json"))
-
-#creating and painting the attractor
-a = MetaAttractortive(config, charset)
-
-
-#loading configuration file
-config = js.load(open("config/metafound/20210123_06.json"))
+config = js.load(open("config/metafound/20210124_04.json"))
 
 #creating and painting the attractor
 a = MetaAttractortive(config, charset)
