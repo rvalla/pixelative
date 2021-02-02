@@ -9,7 +9,7 @@ from metaattractortive import MetaAttractortive
 charset = js.load(open("config/characterset.json"))
 
 #loading default configuration
-inconfig = js.load(open("config/metasearch/ms_20210125_02.json"))
+inconfig = js.load(open("config/metasearch/ms_20210202_01.json"))
 outconfig = copy.deepcopy(inconfig)
 metadepth = inconfig["depth"]
 search = inconfig["outFile"]
