@@ -1,7 +1,7 @@
 {
 	"reference": "shell",
 	"outPath": "output/spratt/",
-  "outFile": "shell",
+	"outFile": "shell",
 	"width": 3000,
 	"height": 2000,
 	"margin": 100,

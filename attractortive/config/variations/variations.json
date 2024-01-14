@@ -1,7 +1,7 @@
 {
 	"reference": "variations",
 	"outPath": "output/variations/",
-  "outFile": "variations",
+	"outFile": "variations",
 	"width": 600,
 	"height": 600,
 	"margin": 60,

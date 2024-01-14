@@ -1,7 +1,7 @@
 {
 	"reference": "test",
 	"outPath": "output/metafound/",
-  "outFile": "20210124_03",
+	"outFile": "20210124_03",
 	"width": 3000,
 	"height": 2000,
 	"margin": 60,

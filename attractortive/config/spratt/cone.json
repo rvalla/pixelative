@@ -1,7 +1,7 @@
 {
 	"reference": "cone",
 	"outPath": "output/spratt/",
-  "outFile": "cone",
+	"outFile": "cone",
 	"width": 3000,
 	"height": 2000,
 	"margin": 100,

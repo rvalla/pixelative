@@ -1,7 +1,7 @@
 {
 	"reference": "branch",
 	"outPath": "output/found/",
-  "outFile": "20210116_04",
+	"outFile": "20210116_04",
 	"width": 3000,
 	"height": 2000,
 	"margin": 150,

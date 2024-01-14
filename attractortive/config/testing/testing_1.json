@@ -1,7 +1,7 @@
 {
 	"reference": "test",
 	"outPath": "output/testing/",
-  "outFile": "testing_1",
+	"outFile": "testing_1",
 	"width": 500,
 	"height": 500,
 	"margin": 20,

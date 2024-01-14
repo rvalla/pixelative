@@ -1,7 +1,7 @@
 {
 	"reference": "thread",
 	"outPath": "output/spratt/",
-  "outFile": "thread",
+	"outFile": "thread",
 	"width": 3000,
 	"height": 2000,
 	"margin": 100,

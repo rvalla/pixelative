@@ -1,7 +1,7 @@
 {
 	"reference": "Hénon",
 	"outPath": "output/spratt/",
-  "outFile": "henon",
+	"outFile": "henon",
 	"width": 3000,
 	"height": 2000,
 	"margin": 150,

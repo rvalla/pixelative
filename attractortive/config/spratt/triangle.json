@@ -1,7 +1,7 @@
 {
 	"reference": "triangle",
 	"outPath": "output/spratt/",
-  "outFile": "triangle",
+	"outFile": "triangle",
 	"width": 3000,
 	"height": 2000,
 	"margin": 150,

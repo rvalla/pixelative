@@ -1,7 +1,7 @@
 {
 	"reference": "face",
 	"outPath": "output/spratt/",
-  "outFile": "face",
+	"outFile": "face",
 	"width": 3000,
 	"height": 2000,
 	"margin": 100,

@@ -1,7 +1,7 @@
 {
 	"reference": "spaceship",
 	"outPath": "output/spratt/",
-  "outFile": "spaceship",
+	"outFile": "spaceship",
 	"width": 3000,
 	"height": 2000,
 	"margin": 150,

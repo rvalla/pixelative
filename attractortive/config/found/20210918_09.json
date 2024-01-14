@@ -1,7 +1,7 @@
 {
 	"reference": "lazo",
 	"outPath": "output/found/",
-  "outFile": "20210918_09",
+	"outFile": "20210918_09",
 	"width": 1920,
 	"height": 1080,
 	"margin": 50,

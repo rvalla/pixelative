@@ -1,7 +1,7 @@
 {
 	"reference": "dancer",
 	"outPath": "output/found/",
-  "outFile": "20210123_01",
+	"outFile": "20210123_01",
 	"width": 2000,
 	"height": 3000,
 	"margin": 150,

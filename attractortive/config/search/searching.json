@@ -1,7 +1,7 @@
 {
 	"reference": "search",
 	"outPath": "output/search/",
-  "outFile": "searching",
+	"outFile": "searching",
 	"width": 600,
 	"height": 600,
 	"margin": 60,

@@ -1,7 +1,7 @@
 {
 	"reference": "test",
 	"outPath": "output/testing/",
-  "outFile": "metatesting_2",
+	"outFile": "metatesting_2",
 	"width": 500,
 	"height": 500,
 	"margin": 20,

@@ -1,7 +1,7 @@
 {
 	"reference": "structure",
 	"outPath": "output/found/",
-  "outFile": "20210115_04",
+	"outFile": "20210115_04",
 	"width": 3000,
 	"height": 2000,
 	"margin": 150,
