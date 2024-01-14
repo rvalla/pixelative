@@ -3,8 +3,8 @@ import json as js
 import random as rd
 from attractortive import Attractortive
 
-search = "011_" #number to indentify search
-count = 1000 #number of intends
+search = "012_" #number to indentify search
+count = 10000 #number of intends
 paramInterval = 2.0 #limiting the random values to (-paramInterval, paramInterval)
 paramVarLimit = 0.08 #limiting the random variations to (-paramVarLimit, paramVarLimit)
 
@@ -50,7 +50,7 @@ def randomSearch():
 	for t in range(count):
 		paramX = randomParameters()
 		paramY = randomParameters()
-		configSearch["outFile"] = search + paramX + paramY
+		configSearch["outFile"] = search + paramX + "__" + paramY
 		configSearch["paramX"] = paramX
 		configSearch["paramY"] = paramY
 		a = Attractortive(configSearch, charset)
@@ -60,7 +60,7 @@ def variationSearch():
 	for t in range(count):
 		paramX = randomVariation(configVariations["paramX"])
 		paramY = randomVariation(configVariations["paramY"])
-		configVariations["outFile"] = search + paramX + paramY
+		configVariations["outFile"] = search + paramX + "__" + paramY
 		configVariations["paramX"] = paramX
 		configVariations["paramY"] = paramY
 		a = Attractortive(configVariations, charset)
