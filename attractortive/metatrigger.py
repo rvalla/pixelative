@@ -1,12 +1,18 @@
 #triggering an attractor construction
 import json as js
+import os
 from metaattractortive import MetaAttractortive
 
 #loading character code set
+config_path = "config/metafound/"
 charset = js.load(open("config/characterset.json"))
 
-#loading configuration file
-config = js.load(open("config/metafound/20210315_01.json"))
+#loading configuration files and creating attractors
+config_files = []
+for f in os.listdir("config/metafound"):
+    if f.startswith("20241010_"):
+        config_files.append(f)
 
-#creating and painting the attractor
-a = MetaAttractortive(config, charset)
+for f in config_files:
+    config = js.load(open(config_path + f))
+    a = MetaAttractortive(config, charset)
