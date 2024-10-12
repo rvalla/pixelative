@@ -3,29 +3,29 @@ import os
 
 path = "output/search"
 output_path = "output/found/"
-prefix = "012_" #files to read...
+prefix = "012" #files to read...
 
 width = 1080
 height = 1080
 margin = 50
-points = 2000000
+points = 1500000
 loop = 10000
 originX = 0
 originY = 0
 paramMode = "values"
 colorMode = "additive"
-facered = 254
-facegreen = 175
-faceblue = 84
-backred = 200
-backgreen = 200
-backblue = 200
+facered = 0
+facegreen = 0
+faceblue = 0
+backred = 255
+backgreen = 255
+backblue = 255
 
-filename = "20240114_"
+filename = "20241110_"
 f_list = []
 for f in os.listdir(path):
     if f.startswith(prefix):
-        f_list.append(f[len(prefix):len(f)-4])
+        f_list.append(f[4:len(f)-4])
 
 for f in range(len(f_list)):
     name = filename + "{:03}".format(f) + ".json"

@@ -3,10 +3,10 @@ import json as js
 import random as rd
 from attractortive import Attractortive
 
-search = "014_" #number to indentify search
+search = "017_" #number to indentify search
 count = 10000 #number of intends
-paramInterval = 2.0 #limiting the random values to (-paramInterval, paramInterval)
-paramVarLimit = 0.08 #limiting the random variations to (-paramVarLimit, paramVarLimit)
+paramInterval = 2.5 #limiting the random values to (-paramInterval, paramInterval)
+paramVarLimit = 0.02 #limiting the random variations to (-paramVarLimit, paramVarLimit)
 
 #loading the character code set
 charset = js.load(open("config/characterset.json"))

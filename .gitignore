@@ -2,5 +2,6 @@
 __pycache__/
 attractortive/config/azarte/
 attractortive/output/azarte/
+attractortive/output/temp/
 mytrigger.py
 misc/personal/
