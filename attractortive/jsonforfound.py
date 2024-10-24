@@ -3,7 +3,7 @@ import os
 
 path = "output/search"
 output_path = "output/found/"
-prefix = "012" #files to read...
+prefix = "018" #files to read...
 
 width = 1080
 height = 1080
@@ -21,7 +21,7 @@ backred = 255
 backgreen = 255
 backblue = 255
 
-filename = "20241110_"
+filename = "20242310_"
 f_list = []
 for f in os.listdir(path):
     if f.startswith(prefix):

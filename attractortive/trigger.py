@@ -10,7 +10,7 @@ charset = js.load(open("config/characterset.json"))
 #loading configuration files and creating attractors
 config_files = []
 for f in os.listdir("config/found"):
-    if f.startswith("20241110_"):
+    if f.startswith("20242310_"):
         config_files.append(f)
 
 for f in config_files:
